@@ -6,11 +6,11 @@ module.exports = {
 		.setName('robot')
 		.setDescription('Vis RoBOT kommandoer'),
 	async execute(interaction) {
-		const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+		const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js')).map(fileName => fileName.slice(0, -3));
 		let message = 'Følgende kommandoer er tilgjengelige fra RoBOT:';
 		for (const kommando of commandFiles) {
 			message += `
-    - ${kommando}`;
+    /${kommando}`;
 		}
 		await interaction.reply({ content: message, epheral: true });
 	},
