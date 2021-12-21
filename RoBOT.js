@@ -4,6 +4,9 @@ const { token } = require('./config.json');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
+/*
+ * Hent inn kommandoer og lagre dem i client
+ */
 client.commands = new Collection();
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -13,6 +16,9 @@ for (const file of commandFiles) {
 	client.commands.set(command.data.name, command);
 }
 
+/*
+ * Hent inn eventer og sett dem opp i clienten slik at de blir aktivert
+ */
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
 for (const file of eventFiles) {
