@@ -6,8 +6,8 @@ module.exports = {
 		.setDescription('Vis lenke til RoBOT på GitHub!'),
 	async execute(interaction) {
 		await interaction.reply(`
+RoBOT er et åpent prosjekt :)
 Du kan finne repository for RoBOT på GitHub her:
-
 [RoBOT](https://github.com/robstr-teacher/RoBOT)
 `);
 	},
