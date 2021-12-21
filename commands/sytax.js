@@ -136,13 +136,13 @@ function potentiallyBuggyCode() {
 }
 
 Se: [debugger](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger)`,
-}
+};
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('syntaks')
 		.setDescription('Spør om syntaks for javascript!')
-		.addStringOption(option => 
+		.addStringOption(option =>
 			option.setName('input')
 				.setDescription('Hvilken syntaks ønsker du?')
 				.setRequired(true)),
@@ -153,22 +153,23 @@ module.exports = {
 			epheral: true,
 		});
 		if (inputString in syntaxes) {
-			await interaction.followUp({content: `
+			await interaction.followUp({ content: `
 Syntax til "${inputString}":
 
-${syntaxes[inputString]}`, epheral: true});
-		} else {
+${syntaxes[inputString]}`, epheral: true });
+		}
+		else {
 			let message = `
 Beklager, kunne ikke finne sytaks til "${inputString}"
             
 Her er en liste over sytakser du kan spørre om:
 `;
-			syntaxList = Object.keys(syntaxes);
-			for(let i = 0; i < syntaxList.length; i++) {
+			const syntaxList = Object.keys(syntaxes);
+			for (let i = 0; i < syntaxList.length; i++) {
 				message += `
     - ${syntaxList[i]}`;
 			}
-			await interaction.followUp({content: message, epheral: true});
+			await interaction.followUp({ content: message, epheral: true });
 		}
 	},
 };
